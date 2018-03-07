@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Project_3
 {
-    public partial class Form1 : Form
+    public partial class DunwoodyRH : Form
     {
-        public Form1()
+        public DunwoodyRH()
         {
             InitializeComponent();
         }
+
     }
 }
