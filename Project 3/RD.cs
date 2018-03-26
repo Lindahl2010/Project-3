@@ -13,9 +13,14 @@ namespace Project_3
 {
     public partial class RD : Form
     {
+        List<Student> studentList = new List<Student>();
+
         public RD()
         {
             InitializeComponent();
+
+            studentList = readData();
+
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -42,37 +47,86 @@ namespace Project_3
         {
             Application.Exit();
         }
-
-        public static List<Student> ReadData()
+        private void searchBtn_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void idSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            idSearchBox.MaxLength = 4;
+        }
+
+        private void scholarCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void athleteCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stdntCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public static List<Student> readData()
+        {
+
             List<Student> students = new List<Student>();
+            Scholar scholar;
+            Athlete athlete;
+            Worker worker;
             const string FILE = "Residence Hall.csv";
             const char DELIM = ',';
             string[] info;
 
             try
             {
+
                 FileStream file = new FileStream(FILE, FileMode.Open, FileAccess.Read);
                 StreamReader reader = new StreamReader(file);
+                string headerLine = reader.ReadLine();
 
                 while (!reader.EndOfStream)
                 {
+
                     info = reader.ReadLine().Split(DELIM);
 
-
+                    switch (info[5])
+                    {
+                        case "Scholar":
+                            scholar = new Scholar(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]));
+                            Console.WriteLine(scholar);
+                            students.Add(scholar);
+                            break;
+                        case "Athlete":
+                            athlete = new Athlete(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]));
+                            Console.WriteLine(athlete);
+                            students.Add(athlete);
+                            break;
+                        case "Worker":
+                            worker = new Worker(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]));
+                            Console.WriteLine(worker);
+                            students.Add(worker);
+                            break;
+                    }
                 }
 
                 reader.Close();
                 file.Close();
 
             }
-            catch
+            catch(Exception i)
             {
-                
+                Console.WriteLine(i.Message);
             }
 
             return students;
+
         }
+
     }
 
     public abstract class Student : IRDFunctions

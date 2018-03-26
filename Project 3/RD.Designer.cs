@@ -35,6 +35,7 @@
             this.rdntSearchBtn = new System.Windows.Forms.Button();
             this.newRdntBtn = new System.Windows.Forms.Button();
             this.newResidentTab = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.stdntCheckBox = new System.Windows.Forms.CheckBox();
             this.athleteCheckBox = new System.Windows.Forms.CheckBox();
@@ -43,16 +44,21 @@
             this.residentSearchTab = new System.Windows.Forms.TabPage();
             this.searchBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.idSearchBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.backBtn2 = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.fnameLabel = new System.Windows.Forms.Label();
+            this.lnameLabel = new System.Windows.Forms.Label();
+            this.dormNumLabel = new System.Windows.Forms.Label();
+            this.floorLabel = new System.Windows.Forms.Label();
+            this.rentLabel = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.selectionTab.SuspendLayout();
             this.newResidentTab.SuspendLayout();
-            this.residentSearchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.residentSearchTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -130,6 +136,16 @@
             this.newResidentTab.Text = "New Resident";
             this.newResidentTab.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(311, 110);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(157, 127);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -148,6 +164,7 @@
             this.stdntCheckBox.TabIndex = 3;
             this.stdntCheckBox.Text = "Student Worker";
             this.stdntCheckBox.UseVisualStyleBackColor = true;
+            this.stdntCheckBox.CheckedChanged += new System.EventHandler(this.stdntCheckBox_CheckedChanged);
             // 
             // athleteCheckBox
             // 
@@ -158,6 +175,7 @@
             this.athleteCheckBox.TabIndex = 2;
             this.athleteCheckBox.Text = "Athlete";
             this.athleteCheckBox.UseVisualStyleBackColor = true;
+            this.athleteCheckBox.CheckedChanged += new System.EventHandler(this.athleteCheckBox_CheckedChanged);
             // 
             // scholarCheckBox
             // 
@@ -168,6 +186,7 @@
             this.scholarCheckBox.TabIndex = 1;
             this.scholarCheckBox.Text = "Scholarship Recipient";
             this.scholarCheckBox.UseVisualStyleBackColor = true;
+            this.scholarCheckBox.CheckedChanged += new System.EventHandler(this.scholarCheckBox_CheckedChanged);
             // 
             // backBtn
             // 
@@ -183,9 +202,15 @@
             // 
             this.residentSearchTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("residentSearchTab.BackgroundImage")));
             this.residentSearchTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.residentSearchTab.Controls.Add(this.rentLabel);
+            this.residentSearchTab.Controls.Add(this.floorLabel);
+            this.residentSearchTab.Controls.Add(this.dormNumLabel);
+            this.residentSearchTab.Controls.Add(this.lnameLabel);
+            this.residentSearchTab.Controls.Add(this.fnameLabel);
+            this.residentSearchTab.Controls.Add(this.idLabel);
             this.residentSearchTab.Controls.Add(this.searchBtn);
             this.residentSearchTab.Controls.Add(this.label4);
-            this.residentSearchTab.Controls.Add(this.textBox1);
+            this.residentSearchTab.Controls.Add(this.idSearchBox);
             this.residentSearchTab.Controls.Add(this.label2);
             this.residentSearchTab.Controls.Add(this.backBtn2);
             this.residentSearchTab.Location = new System.Drawing.Point(4, 25);
@@ -204,6 +229,7 @@
             this.searchBtn.TabIndex = 5;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // label4
             // 
@@ -214,12 +240,13 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "ID Number: ";
             // 
-            // textBox1
+            // idSearchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(159, 157);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 3;
+            this.idSearchBox.Location = new System.Drawing.Point(159, 157);
+            this.idSearchBox.Name = "idSearchBox";
+            this.idSearchBox.Size = new System.Drawing.Size(100, 22);
+            this.idSearchBox.TabIndex = 3;
+            this.idSearchBox.TextChanged += new System.EventHandler(this.idSearchBox_TextChanged);
             // 
             // label2
             // 
@@ -252,15 +279,59 @@
             this.exitBtn.UseVisualStyleBackColor = true;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
-            // pictureBox1
+            // idLabel
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(311, 110);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(157, 127);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(321, 45);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(83, 17);
+            this.idLabel.TabIndex = 6;
+            this.idLabel.Text = "ID Number: ";
+            // 
+            // fnameLabel
+            // 
+            this.fnameLabel.AutoSize = true;
+            this.fnameLabel.Location = new System.Drawing.Point(321, 73);
+            this.fnameLabel.Name = "fnameLabel";
+            this.fnameLabel.Size = new System.Drawing.Size(84, 17);
+            this.fnameLabel.TabIndex = 7;
+            this.fnameLabel.Text = "First Name: ";
+            // 
+            // lnameLabel
+            // 
+            this.lnameLabel.AutoSize = true;
+            this.lnameLabel.Location = new System.Drawing.Point(321, 101);
+            this.lnameLabel.Name = "lnameLabel";
+            this.lnameLabel.Size = new System.Drawing.Size(80, 17);
+            this.lnameLabel.TabIndex = 8;
+            this.lnameLabel.Text = "Last Name:";
+            // 
+            // dormNumLabel
+            // 
+            this.dormNumLabel.AutoSize = true;
+            this.dormNumLabel.Location = new System.Drawing.Point(321, 129);
+            this.dormNumLabel.Name = "dormNumLabel";
+            this.dormNumLabel.Size = new System.Drawing.Size(104, 17);
+            this.dormNumLabel.TabIndex = 9;
+            this.dormNumLabel.Text = "Dorm Number: ";
+            // 
+            // floorLabel
+            // 
+            this.floorLabel.AutoSize = true;
+            this.floorLabel.Location = new System.Drawing.Point(321, 155);
+            this.floorLabel.Name = "floorLabel";
+            this.floorLabel.Size = new System.Drawing.Size(102, 17);
+            this.floorLabel.TabIndex = 10;
+            this.floorLabel.Text = "Floor Number: ";
+            // 
+            // rentLabel
+            // 
+            this.rentLabel.AutoSize = true;
+            this.rentLabel.Location = new System.Drawing.Point(321, 184);
+            this.rentLabel.Name = "rentLabel";
+            this.rentLabel.Size = new System.Drawing.Size(46, 17);
+            this.rentLabel.TabIndex = 11;
+            this.rentLabel.Text = "Rent: ";
             // 
             // RD
             // 
@@ -282,9 +353,9 @@
             this.selectionTab.PerformLayout();
             this.newResidentTab.ResumeLayout(false);
             this.newResidentTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.residentSearchTab.ResumeLayout(false);
             this.residentSearchTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,8 +378,14 @@
         private System.Windows.Forms.Button backBtn2;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox idSearchBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label floorLabel;
+        private System.Windows.Forms.Label dormNumLabel;
+        private System.Windows.Forms.Label lnameLabel;
+        private System.Windows.Forms.Label fnameLabel;
+        private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.Label rentLabel;
     }
 }

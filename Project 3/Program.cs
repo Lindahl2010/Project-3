@@ -20,57 +20,58 @@ namespace Project_3
         }
     }
 
-    //class Scholar : Student
-    //{
-    //    public Scholar(int idNum, string fname, string lname, int dormNum, int floor, int rent)
-    //    {
-    //        this.idNum = idNum;
-    //        this.fname = fname;
-    //        this.lname = lname;
-    //        this.dormNum = dormNum;
-    //        this.floor = floor;
-    //        this.rent = rent;
-    //    }
+    class Scholar : Student
+    {
+        public Scholar(int idNum, string fname, string lname, int dormNum, int floor, int rent) : base(idNum, fname, lname, dormNum, floor, rent)
+        {
+            this.idNum = idNum;
+            this.fname = fname;
+            this.lname = lname;
+            this.dormNum = dormNum;
+            this.floor = floor;
+            this.rent = rent;
+        }
 
-    //    public override int Balance()
-    //    {
-    //        return rent;
-    //    }
-    //}
+        public override int Balance()
+        {
+            return rent;
+        }
+    }
 
-    //class Athlete : Student
-    //{
-    //    public Athlete(int idNum, string fname, string lname, int dormNum, int floor, int rent)
-    //    {
-    //        this.idNum = idNum;
-    //        this.fname = fname;
-    //        this.lname = lname;
-    //        this.dormNum = dormNum;
-    //        this.floor = floor;
-    //        this.rent = rent;
-    //    }
+    class Athlete : Student
+    {
+        public Athlete(int idNum, string fname, string lname, int dormNum, int floor, int rent) : base(idNum, fname, lname, dormNum, floor, rent)
+        {
+            this.idNum = idNum;
+            this.fname = fname;
+            this.lname = lname;
+            this.dormNum = dormNum;
+            this.floor = floor;
+            this.rent = rent;
+        }
 
-    //    public override int Balance()
-    //    {
-    //        return rent;
-    //    }
-    //}
+        public override int Balance()
+        {
+            return rent;
+        }
+    }
 
-    //class Worker : Student
-    //{
-    //    public Worker(int idNum, string fname, string lname, int dormNum, int floor, int rent)
-    //    {
-    //        this.idNum = idNum;
-    //        this.fname = fname;
-    //        this.lname = lname;
-    //        this.dormNum = dormNum;
-    //        this.floor = floor;
-    //        this.rent = rent;
-    //    }
+    class Worker : Student
+    {
+        public Worker(int idNum, string fname, string lname, int dormNum, int floor, int rent) : base(idNum, fname, lname, dormNum, floor, rent)
+        {
+            this.idNum = idNum;
+            this.fname = fname;
+            this.lname = lname;
+            this.dormNum = dormNum;
+            this.floor = floor;
+            this.rent = rent;
+        }
 
-    //    public override int Balance()
-    //    {
-    //        return rent;
-    //    }
-    //}
+        public override int Balance()
+        {
+            return rent;
+        }
+    }
+
 }
