@@ -49,7 +49,22 @@ namespace Project_3
         }
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            string idNumber = idSearchBox.Text;
 
+            var stdntFile =
+                from stdnt in studentList
+                where stdnt.idNum == Convert.ToInt32(idNumber)
+                select new { stdnt.idNum, stdnt.fname, stdnt.lname, stdnt.floor, stdnt.dormNum, stdnt.rent };
+
+            foreach (var stdnt in stdntFile)
+            {
+                label5.Text = Convert.ToString(stdnt.idNum);
+                label6.Text = stdnt.fname;
+                label7.Text = stdnt.lname;
+                label8.Text = Convert.ToString(stdnt.dormNum);
+                label9.Text = Convert.ToString(stdnt.floor);
+                label10.Text = Convert.ToString(stdnt.rent);
+            }
         }
 
         private void idSearchBox_TextChanged(object sender, EventArgs e)
@@ -59,7 +74,7 @@ namespace Project_3
 
         private void scholarCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            
         }
         private void athleteCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -94,20 +109,20 @@ namespace Project_3
 
                     info = reader.ReadLine().Split(DELIM);
 
-                    switch (info[5])
+                    switch (info[6])
                     {
                         case "Scholar":
-                            scholar = new Scholar(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]));
+                            scholar = new Scholar(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]), info[6]);
                             Console.WriteLine(scholar);
                             students.Add(scholar);
                             break;
                         case "Athlete":
-                            athlete = new Athlete(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]));
+                            athlete = new Athlete(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]), info[6]);
                             Console.WriteLine(athlete);
                             students.Add(athlete);
                             break;
                         case "Worker":
-                            worker = new Worker(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]));
+                            worker = new Worker(Convert.ToInt32(info[0]), info[1], info[2], Convert.ToInt32(info[3]), Convert.ToInt32(info[4]), Convert.ToInt32(info[5]), info[6]);
                             Console.WriteLine(worker);
                             students.Add(worker);
                             break;
@@ -137,13 +152,14 @@ namespace Project_3
         public int dormNum { get; set; }
         public int floor { get; set; }
         public int rent { get; set; }
+        public string studentGroup { get; set; }
 
         public Student()
         {
 
         }
         
-        public Student(int idNum, string fname, string lname, int dormNum, int floor, int rent)
+        public Student(int idNum, string fname, string lname, int dormNum, int floor, int rent, string stdntGroup)
         {
             this.idNum = idNum;
             this.fname = fname;
@@ -151,6 +167,7 @@ namespace Project_3
             this.dormNum = dormNum;
             this.floor = floor;
             this.rent = rent;
+            studentGroup = stdntGroup;
         }
 
         public abstract int Balance();

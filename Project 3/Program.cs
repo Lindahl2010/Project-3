@@ -22,7 +22,7 @@ namespace Project_3
 
     class Scholar : Student
     {
-        public Scholar(int idNum, string fname, string lname, int dormNum, int floor, int rent) : base(idNum, fname, lname, dormNum, floor, rent)
+        public Scholar(int idNum, string fname, string lname, int dormNum, int floor, int rent, string stdntGroup) : base(idNum, fname, lname, dormNum, floor, rent, stdntGroup)
         {
             this.idNum = idNum;
             this.fname = fname;
@@ -40,7 +40,7 @@ namespace Project_3
 
     class Athlete : Student
     {
-        public Athlete(int idNum, string fname, string lname, int dormNum, int floor, int rent) : base(idNum, fname, lname, dormNum, floor, rent)
+        public Athlete(int idNum, string fname, string lname, int dormNum, int floor, int rent, string stdntGroup) : base(idNum, fname, lname, dormNum, floor, rent, stdntGroup)
         {
             this.idNum = idNum;
             this.fname = fname;
@@ -58,7 +58,7 @@ namespace Project_3
 
     class Worker : Student
     {
-        public Worker(int idNum, string fname, string lname, int dormNum, int floor, int rent) : base(idNum, fname, lname, dormNum, floor, rent)
+        public Worker(int idNum, string fname, string lname, int dormNum, int floor, int rent, string stdntGroup) : base(idNum, fname, lname, dormNum, floor, rent, stdntGroup)
         {
             this.idNum = idNum;
             this.fname = fname;
