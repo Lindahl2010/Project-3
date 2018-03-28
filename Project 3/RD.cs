@@ -20,6 +20,7 @@ namespace Project_3
             InitializeComponent();
 
             studentList = readData();
+            label12.Text = studentList.Count.ToString();
 
         }
 
@@ -47,23 +48,31 @@ namespace Project_3
         {
             Application.Exit();
         }
+
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            int rent;
             string idNumber = idSearchBox.Text;
+            Console.WriteLine(idNumber);
 
             var stdntFile =
                 from stdnt in studentList
                 where stdnt.idNum == Convert.ToInt32(idNumber)
-                select new { stdnt.idNum, stdnt.fname, stdnt.lname, stdnt.floor, stdnt.dormNum, stdnt.rent };
+                select stdnt;
 
             foreach (var stdnt in stdntFile)
             {
-                label5.Text = Convert.ToString(stdnt.idNum);
-                label6.Text = stdnt.fname;
-                label7.Text = stdnt.lname;
-                label8.Text = Convert.ToString(stdnt.dormNum);
-                label9.Text = Convert.ToString(stdnt.floor);
-                label10.Text = Convert.ToString(stdnt.rent);
+                if(Convert.ToInt32(idNumber) == stdnt.idNum)
+                {
+                    rent = stdnt.rent;
+                    label5.Text = Convert.ToString(stdnt.idNum);
+                    label6.Text = stdnt.fname;
+                    label7.Text = stdnt.lname;
+                    label8.Text = Convert.ToString(stdnt.dormNum);
+                    label9.Text = Convert.ToString(stdnt.floor);
+                    label10.Text = rent.ToString("c");
+                }
+
             }
         }
 
@@ -76,6 +85,7 @@ namespace Project_3
         {
             
         }
+
         private void athleteCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -93,7 +103,7 @@ namespace Project_3
             Scholar scholar;
             Athlete athlete;
             Worker worker;
-            const string FILE = "Residence Hall.csv";
+            const string FILE = "Residence Hall1.csv";
             const char DELIM = ',';
             string[] info;
 
@@ -126,6 +136,8 @@ namespace Project_3
                             Console.WriteLine(worker);
                             students.Add(worker);
                             break;
+                        default:
+                            break;
                     }
                 }
 
@@ -133,9 +145,9 @@ namespace Project_3
                 file.Close();
 
             }
-            catch(Exception i)
+            catch (Exception i)
             {
-                Console.WriteLine(i.Message);
+                Console.WriteLine(i.StackTrace);
             }
 
             return students;

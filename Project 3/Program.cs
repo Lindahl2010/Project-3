@@ -30,6 +30,7 @@ namespace Project_3
             this.dormNum = dormNum;
             this.floor = floor;
             this.rent = rent;
+            studentGroup = stdntGroup;
         }
 
         public override int Balance()
@@ -48,6 +49,7 @@ namespace Project_3
             this.dormNum = dormNum;
             this.floor = floor;
             this.rent = rent;
+            studentGroup = stdntGroup;
         }
 
         public override int Balance()
@@ -66,6 +68,7 @@ namespace Project_3
             this.dormNum = dormNum;
             this.floor = floor;
             this.rent = rent;
+            studentGroup = stdntGroup;
         }
 
         public override int Balance()
