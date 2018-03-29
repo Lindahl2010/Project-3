@@ -24,6 +24,13 @@ namespace Project_3
 
         }
 
+        private void RD_Load(object sender, EventArgs e)
+        {
+            stdntTypeCmbBox.Items.Add("Worker");
+            stdntTypeCmbBox.Items.Add("Athlete");
+            stdntTypeCmbBox.Items.Add("Scholar");
+        }
+
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.tabControl.SelectTab(0);
@@ -32,6 +39,13 @@ namespace Project_3
         private void backBtn2_Click(object sender, EventArgs e)
         {
             this.tabControl.SelectTab(0);
+            //label5.ResetText();
+            //label6.Text = 
+            //label7.Text = 
+            //label8.Text = 
+            //label9.Text = 
+            //label10.Text = 
+            //label13.Text = 
         }
 
         private void newRdntBtn_Click(object sender, EventArgs e)
@@ -52,48 +66,51 @@ namespace Project_3
         private void searchBtn_Click(object sender, EventArgs e)
         {
             int rent;
-            string idNumber = idSearchBox.Text;
-            Console.WriteLine(idNumber);
+            int idNumber = Convert.ToInt32(idSearchBox.Text);
 
-            var stdntFile =
-                from stdnt in studentList
-                where stdnt.idNum == Convert.ToInt32(idNumber)
-                select stdnt;
-
-            foreach (var stdnt in stdntFile)
+            try
             {
-                if(Convert.ToInt32(idNumber) == stdnt.idNum)
-                {
-                    rent = stdnt.rent;
-                    label5.Text = Convert.ToString(stdnt.idNum);
-                    label6.Text = stdnt.fname;
-                    label7.Text = stdnt.lname;
-                    label8.Text = Convert.ToString(stdnt.dormNum);
-                    label9.Text = Convert.ToString(stdnt.floor);
-                    label10.Text = rent.ToString("c");
-                }
+                var stdntFile =
+                    from stdnt in studentList
+                    where idNumber == stdnt.idNum
+                    select stdnt;
 
+                foreach (var stdnt in stdntFile)
+                {
+                    if (stdnt.idNum == idNumber)
+                    {
+                        rent = stdnt.rent;
+                        label5.Text = Convert.ToString(stdnt.idNum);
+                        label6.Text = stdnt.fname;
+                        label7.Text = stdnt.lname;
+                        label8.Text = Convert.ToString(stdnt.dormNum);
+                        label9.Text = Convert.ToString(stdnt.floor);
+                        label10.Text = rent.ToString("c");
+                        label13.Text = stdnt.studentGroup;
+                    }
+                    else if (stdnt.idNum != idNumber)
+                    {
+                        label5.Hide();
+                        label6.Hide();
+                        label7.Hide();
+                        label8.Hide();
+                        label9.Hide();
+                        label10.Hide();
+                        label13.Hide();
+                    }
+
+                    idSearchBox.Clear();
+                }
+            }catch(Exception i)
+            {
+                Console.WriteLine(i.StackTrace);
+                MessageBox.Show("Please Enter an ID Number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void idSearchBox_TextChanged(object sender, EventArgs e)
         {
             idSearchBox.MaxLength = 4;
-        }
-
-        private void scholarCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void athleteCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stdntCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         public static List<Student> readData()
@@ -103,7 +120,7 @@ namespace Project_3
             Scholar scholar;
             Athlete athlete;
             Worker worker;
-            const string FILE = "Residence Hall1.csv";
+            const string FILE = "Residence Hall.csv";
             const char DELIM = ',';
             string[] info;
 
@@ -154,6 +171,103 @@ namespace Project_3
 
         }
 
+        private void fnameTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void lnameTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            FileStream file = new FileStream("Residence Hall.csv", FileMode.Append, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(file);
+
+            try
+            {
+                string fname = fnameTxtBox.Text;
+                string lname = lnameTxtBox.Text;
+                string stdntGroup = stdntTypeCmbBox.SelectedItem.ToString();
+                string floor = floorCmbBox.SelectedItem.ToString();
+                string stdntID = stdntIDTxtBox.Text;
+                string dormNum = dormNumTxtBox.Text;
+                int rent = 0;
+
+                if (stdntGroup == "Worker")
+                {
+                    rent = 1245;
+                }
+                else if (stdntGroup == "Athlete")
+                {
+                    rent = 1200;
+                }
+                else if (stdntGroup == "Scholar")
+                {
+                    rent = 100;
+                }
+                else
+                {
+
+                }
+
+                writer.WriteLine("{0},{1},{2},{3},{4},{5},{6}",stdntID, fname, lname, dormNum, floor, rent, stdntGroup);
+
+                writer.Close();
+                file.Close();
+
+                fnameTxtBox.Clear();
+                lnameTxtBox.Clear();
+                stdntIDTxtBox.Clear();
+                dormNumTxtBox.Clear();
+                stdntTypeCmbBox.ResetText();
+                floorCmbBox.ResetText();
+                floorCmbBox.Items.Clear();
+
+            }
+            catch (Exception i)
+            {
+                Console.WriteLine(i.StackTrace);
+            }
+        }
+
+        private void floorCmbBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stdntTypeCmbBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            floorCmbBox.Items.Clear();
+            if (stdntTypeCmbBox.SelectedItem == "Worker")
+            {
+                floorCmbBox.Items.Add("1");
+                floorCmbBox.Items.Add("2");
+                floorCmbBox.Items.Add("3");
+            }
+            else if (stdntTypeCmbBox.SelectedItem == "Athlete")
+            {
+                floorCmbBox.Items.Add("4");
+                floorCmbBox.Items.Add("5");
+                floorCmbBox.Items.Add("6");
+            }
+            else
+            {
+                floorCmbBox.Items.Add("7");
+                floorCmbBox.Items.Add("8");
+            }
+        }
+
+        private void stdntIDTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            stdntIDTxtBox.MaxLength = 4;
+        }
+
+        private void dormNumTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            dormNumTxtBox.MaxLength = 4;
+        }
     }
 
     public abstract class Student : IRDFunctions

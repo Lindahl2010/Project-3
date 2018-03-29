@@ -35,13 +35,22 @@
             this.rdntSearchBtn = new System.Windows.Forms.Button();
             this.newRdntBtn = new System.Windows.Forms.Button();
             this.newResidentTab = new System.Windows.Forms.TabPage();
+            this.floorCmbBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.stdntTypeCmbBox = new System.Windows.Forms.ComboBox();
+            this.createBtn = new System.Windows.Forms.Button();
+            this.lnameTxtBox = new System.Windows.Forms.TextBox();
+            this.fnameTxtBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.stdntCheckBox = new System.Windows.Forms.CheckBox();
-            this.athleteCheckBox = new System.Windows.Forms.CheckBox();
-            this.scholarCheckBox = new System.Windows.Forms.CheckBox();
             this.backBtn = new System.Windows.Forms.Button();
             this.residentSearchTab = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,8 +69,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.backBtn2 = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.stdntIDTxtBox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dormNumTxtBox = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.selectionTab.SuspendLayout();
             this.newResidentTab.SuspendLayout();
@@ -134,11 +145,21 @@
             // newResidentTab
             // 
             this.newResidentTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.newResidentTab.Controls.Add(this.dormNumTxtBox);
+            this.newResidentTab.Controls.Add(this.label19);
+            this.newResidentTab.Controls.Add(this.stdntIDTxtBox);
+            this.newResidentTab.Controls.Add(this.label18);
+            this.newResidentTab.Controls.Add(this.floorCmbBox);
+            this.newResidentTab.Controls.Add(this.label17);
+            this.newResidentTab.Controls.Add(this.label16);
+            this.newResidentTab.Controls.Add(this.stdntTypeCmbBox);
+            this.newResidentTab.Controls.Add(this.createBtn);
+            this.newResidentTab.Controls.Add(this.lnameTxtBox);
+            this.newResidentTab.Controls.Add(this.fnameTxtBox);
+            this.newResidentTab.Controls.Add(this.label15);
+            this.newResidentTab.Controls.Add(this.label14);
             this.newResidentTab.Controls.Add(this.pictureBox1);
             this.newResidentTab.Controls.Add(this.label1);
-            this.newResidentTab.Controls.Add(this.stdntCheckBox);
-            this.newResidentTab.Controls.Add(this.athleteCheckBox);
-            this.newResidentTab.Controls.Add(this.scholarCheckBox);
             this.newResidentTab.Controls.Add(this.backBtn);
             this.newResidentTab.Location = new System.Drawing.Point(4, 25);
             this.newResidentTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -149,11 +170,91 @@
             this.newResidentTab.Text = "New Resident";
             this.newResidentTab.UseVisualStyleBackColor = true;
             // 
+            // floorCmbBox
+            // 
+            this.floorCmbBox.FormattingEnabled = true;
+            this.floorCmbBox.Location = new System.Drawing.Point(213, 210);
+            this.floorCmbBox.Name = "floorCmbBox";
+            this.floorCmbBox.Size = new System.Drawing.Size(79, 24);
+            this.floorCmbBox.TabIndex = 14;
+            this.floorCmbBox.SelectedIndexChanged += new System.EventHandler(this.floorCmbBox_SelectedIndexChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(73, 213);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(102, 17);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Floor Number: ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(74, 171);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(101, 17);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Student Type: ";
+            // 
+            // stdntTypeCmbBox
+            // 
+            this.stdntTypeCmbBox.FormattingEnabled = true;
+            this.stdntTypeCmbBox.Location = new System.Drawing.Point(188, 168);
+            this.stdntTypeCmbBox.Name = "stdntTypeCmbBox";
+            this.stdntTypeCmbBox.Size = new System.Drawing.Size(141, 24);
+            this.stdntTypeCmbBox.TabIndex = 11;
+            this.stdntTypeCmbBox.SelectedIndexChanged += new System.EventHandler(this.stdntTypeCmbBox_SelectedIndexChanged);
+            // 
+            // createBtn
+            // 
+            this.createBtn.Location = new System.Drawing.Point(213, 315);
+            this.createBtn.Name = "createBtn";
+            this.createBtn.Size = new System.Drawing.Size(79, 27);
+            this.createBtn.TabIndex = 10;
+            this.createBtn.Text = "Create";
+            this.createBtn.UseVisualStyleBackColor = true;
+            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
+            // 
+            // lnameTxtBox
+            // 
+            this.lnameTxtBox.Location = new System.Drawing.Point(188, 128);
+            this.lnameTxtBox.Name = "lnameTxtBox";
+            this.lnameTxtBox.Size = new System.Drawing.Size(141, 22);
+            this.lnameTxtBox.TabIndex = 9;
+            this.lnameTxtBox.TextChanged += new System.EventHandler(this.lnameTxtBox_TextChanged);
+            // 
+            // fnameTxtBox
+            // 
+            this.fnameTxtBox.Location = new System.Drawing.Point(188, 90);
+            this.fnameTxtBox.Name = "fnameTxtBox";
+            this.fnameTxtBox.Size = new System.Drawing.Size(141, 22);
+            this.fnameTxtBox.TabIndex = 8;
+            this.fnameTxtBox.TextChanged += new System.EventHandler(this.fnameTxtBox_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(96, 128);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 17);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Last Name: ";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(96, 90);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(84, 17);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "First Name: ";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(220, 118);
+            this.pictureBox1.Location = new System.Drawing.Point(364, 60);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(157, 127);
@@ -163,47 +264,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 118);
+            this.label1.Location = new System.Drawing.Point(109, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 34);
+            this.label1.Size = new System.Drawing.Size(231, 34);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Please select which type of \r\nnew resident to be entered.";
-            // 
-            // stdntCheckBox
-            // 
-            this.stdntCheckBox.AutoSize = true;
-            this.stdntCheckBox.Location = new System.Drawing.Point(24, 225);
-            this.stdntCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.stdntCheckBox.Name = "stdntCheckBox";
-            this.stdntCheckBox.Size = new System.Drawing.Size(129, 21);
-            this.stdntCheckBox.TabIndex = 3;
-            this.stdntCheckBox.Text = "Student Worker";
-            this.stdntCheckBox.UseVisualStyleBackColor = true;
-            this.stdntCheckBox.CheckedChanged += new System.EventHandler(this.stdntCheckBox_CheckedChanged);
-            // 
-            // athleteCheckBox
-            // 
-            this.athleteCheckBox.AutoSize = true;
-            this.athleteCheckBox.Location = new System.Drawing.Point(24, 197);
-            this.athleteCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.athleteCheckBox.Name = "athleteCheckBox";
-            this.athleteCheckBox.Size = new System.Drawing.Size(74, 21);
-            this.athleteCheckBox.TabIndex = 2;
-            this.athleteCheckBox.Text = "Athlete";
-            this.athleteCheckBox.UseVisualStyleBackColor = true;
-            this.athleteCheckBox.CheckedChanged += new System.EventHandler(this.athleteCheckBox_CheckedChanged);
-            // 
-            // scholarCheckBox
-            // 
-            this.scholarCheckBox.AutoSize = true;
-            this.scholarCheckBox.Location = new System.Drawing.Point(24, 169);
-            this.scholarCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.scholarCheckBox.Name = "scholarCheckBox";
-            this.scholarCheckBox.Size = new System.Drawing.Size(167, 21);
-            this.scholarCheckBox.TabIndex = 1;
-            this.scholarCheckBox.Text = "Scholarship Recipient";
-            this.scholarCheckBox.UseVisualStyleBackColor = true;
-            this.scholarCheckBox.CheckedChanged += new System.EventHandler(this.scholarCheckBox_CheckedChanged);
+            this.label1.Text = "Please enter the information for the\r\nnew resident to be entered.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backBtn
             // 
@@ -220,6 +286,7 @@
             // 
             this.residentSearchTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("residentSearchTab.BackgroundImage")));
             this.residentSearchTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.residentSearchTab.Controls.Add(this.label13);
             this.residentSearchTab.Controls.Add(this.label12);
             this.residentSearchTab.Controls.Add(this.label11);
             this.residentSearchTab.Controls.Add(this.label10);
@@ -248,10 +315,37 @@
             this.residentSearchTab.Text = "Resident Search";
             this.residentSearchTab.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(358, 22);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 17);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Student Type";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(156, 293);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(16, 17);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "#";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(16, 293);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(136, 17);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Total # of Students: ";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(472, 187);
+            this.label10.Location = new System.Drawing.Point(479, 187);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 17);
@@ -261,7 +355,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(472, 158);
+            this.label9.Location = new System.Drawing.Point(479, 158);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 17);
@@ -271,7 +365,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(471, 132);
+            this.label8.Location = new System.Drawing.Point(478, 132);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 17);
@@ -281,7 +375,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(472, 103);
+            this.label7.Location = new System.Drawing.Point(479, 103);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 17);
@@ -291,7 +385,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(472, 75);
+            this.label6.Location = new System.Drawing.Point(479, 75);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 17);
@@ -301,7 +395,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(472, 48);
+            this.label5.Location = new System.Drawing.Point(479, 48);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 17);
@@ -311,7 +405,7 @@
             // rentLabel
             // 
             this.rentLabel.AutoSize = true;
-            this.rentLabel.Location = new System.Drawing.Point(351, 187);
+            this.rentLabel.Location = new System.Drawing.Point(358, 187);
             this.rentLabel.Name = "rentLabel";
             this.rentLabel.Size = new System.Drawing.Size(46, 17);
             this.rentLabel.TabIndex = 11;
@@ -320,7 +414,7 @@
             // floorLabel
             // 
             this.floorLabel.AutoSize = true;
-            this.floorLabel.Location = new System.Drawing.Point(351, 158);
+            this.floorLabel.Location = new System.Drawing.Point(358, 158);
             this.floorLabel.Name = "floorLabel";
             this.floorLabel.Size = new System.Drawing.Size(102, 17);
             this.floorLabel.TabIndex = 10;
@@ -329,7 +423,7 @@
             // dormNumLabel
             // 
             this.dormNumLabel.AutoSize = true;
-            this.dormNumLabel.Location = new System.Drawing.Point(351, 132);
+            this.dormNumLabel.Location = new System.Drawing.Point(358, 132);
             this.dormNumLabel.Name = "dormNumLabel";
             this.dormNumLabel.Size = new System.Drawing.Size(104, 17);
             this.dormNumLabel.TabIndex = 9;
@@ -338,7 +432,7 @@
             // lnameLabel
             // 
             this.lnameLabel.AutoSize = true;
-            this.lnameLabel.Location = new System.Drawing.Point(351, 103);
+            this.lnameLabel.Location = new System.Drawing.Point(358, 103);
             this.lnameLabel.Name = "lnameLabel";
             this.lnameLabel.Size = new System.Drawing.Size(80, 17);
             this.lnameLabel.TabIndex = 8;
@@ -347,7 +441,7 @@
             // fnameLabel
             // 
             this.fnameLabel.AutoSize = true;
-            this.fnameLabel.Location = new System.Drawing.Point(351, 75);
+            this.fnameLabel.Location = new System.Drawing.Point(358, 75);
             this.fnameLabel.Name = "fnameLabel";
             this.fnameLabel.Size = new System.Drawing.Size(84, 17);
             this.fnameLabel.TabIndex = 7;
@@ -356,7 +450,7 @@
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(351, 48);
+            this.idLabel.Location = new System.Drawing.Point(358, 48);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(83, 17);
             this.idLabel.TabIndex = 6;
@@ -424,23 +518,39 @@
             this.exitBtn.UseVisualStyleBackColor = true;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
-            // label11
+            // label18
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 293);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 17);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Total # of Students: ";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(96, 279);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 17);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Student ID:";
             // 
-            // label12
+            // stdntIDTxtBox
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(156, 293);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(16, 17);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "#";
+            this.stdntIDTxtBox.Location = new System.Drawing.Point(188, 276);
+            this.stdntIDTxtBox.Name = "stdntIDTxtBox";
+            this.stdntIDTxtBox.Size = new System.Drawing.Size(104, 22);
+            this.stdntIDTxtBox.TabIndex = 16;
+            this.stdntIDTxtBox.TextChanged += new System.EventHandler(this.stdntIDTxtBox_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(73, 248);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(100, 17);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "Dorm Number:";
+            // 
+            // dormNumTxtBox
+            // 
+            this.dormNumTxtBox.Location = new System.Drawing.Point(188, 245);
+            this.dormNumTxtBox.Name = "dormNumTxtBox";
+            this.dormNumTxtBox.Size = new System.Drawing.Size(104, 22);
+            this.dormNumTxtBox.TabIndex = 18;
+            this.dormNumTxtBox.TextChanged += new System.EventHandler(this.dormNumTxtBox_TextChanged);
             // 
             // RD
             // 
@@ -458,6 +568,7 @@
             this.MaximizeBox = false;
             this.Name = "RD";
             this.Text = "Resident Management";
+            this.Load += new System.EventHandler(this.RD_Load);
             this.tabControl.ResumeLayout(false);
             this.selectionTab.ResumeLayout(false);
             this.selectionTab.PerformLayout();
@@ -479,9 +590,6 @@
         private System.Windows.Forms.Button newRdntBtn;
         private System.Windows.Forms.TabPage newResidentTab;
         private System.Windows.Forms.TabPage residentSearchTab;
-        private System.Windows.Forms.CheckBox stdntCheckBox;
-        private System.Windows.Forms.CheckBox athleteCheckBox;
-        private System.Windows.Forms.CheckBox scholarCheckBox;
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Label label1;
@@ -505,5 +613,19 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox lnameTxtBox;
+        private System.Windows.Forms.TextBox fnameTxtBox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button createBtn;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox stdntTypeCmbBox;
+        private System.Windows.Forms.ComboBox floorCmbBox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox stdntIDTxtBox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox dormNumTxtBox;
+        private System.Windows.Forms.Label label19;
     }
 }
