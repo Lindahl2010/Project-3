@@ -73,6 +73,7 @@
             this.stdntIDTxtBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.dormNumTxtBox = new System.Windows.Forms.TextBox();
+            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.selectionTab.SuspendLayout();
             this.newResidentTab.SuspendLayout();
@@ -145,6 +146,7 @@
             // newResidentTab
             // 
             this.newResidentTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.newResidentTab.Controls.Add(this.errorMsgLabel);
             this.newResidentTab.Controls.Add(this.dormNumTxtBox);
             this.newResidentTab.Controls.Add(this.label19);
             this.newResidentTab.Controls.Add(this.stdntIDTxtBox);
@@ -552,6 +554,16 @@
             this.dormNumTxtBox.TabIndex = 18;
             this.dormNumTxtBox.TextChanged += new System.EventHandler(this.dormNumTxtBox_TextChanged);
             // 
+            // errorMsgLabel
+            // 
+            this.errorMsgLabel.AutoSize = true;
+            this.errorMsgLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMsgLabel.Location = new System.Drawing.Point(298, 320);
+            this.errorMsgLabel.Name = "errorMsgLabel";
+            this.errorMsgLabel.Size = new System.Drawing.Size(54, 17);
+            this.errorMsgLabel.TabIndex = 19;
+            this.errorMsgLabel.Text = "label20";
+            // 
             // RD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -627,5 +639,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox dormNumTxtBox;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label errorMsgLabel;
     }
 }

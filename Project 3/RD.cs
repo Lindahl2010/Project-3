@@ -29,6 +29,7 @@ namespace Project_3
             stdntTypeCmbBox.Items.Add("Worker");
             stdntTypeCmbBox.Items.Add("Athlete");
             stdntTypeCmbBox.Items.Add("Scholar");
+            errorMsgLabel.Hide();
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -39,13 +40,13 @@ namespace Project_3
         private void backBtn2_Click(object sender, EventArgs e)
         {
             this.tabControl.SelectTab(0);
-            //label5.ResetText();
-            //label6.Text = 
-            //label7.Text = 
-            //label8.Text = 
-            //label9.Text = 
-            //label10.Text = 
-            //label13.Text = 
+            label5.Text = "ID Number";
+            label6.Text = "First Name";
+            label7.Text = "Last Name";
+            label8.Text = "Dorm Number";
+            label9.Text = "Floor Number";
+            label10.Text = "Rent";
+            label13.Text = "Student Type";
         }
 
         private void newRdntBtn_Click(object sender, EventArgs e)
@@ -65,11 +66,13 @@ namespace Project_3
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            int rent;
-            int idNumber = Convert.ToInt32(idSearchBox.Text);
 
             try
             {
+
+                int rent;
+                int idNumber = Convert.ToInt32(idSearchBox.Text);
+
                 var stdntFile =
                     from stdnt in studentList
                     where idNumber == stdnt.idNum
@@ -90,13 +93,7 @@ namespace Project_3
                     }
                     else if (stdnt.idNum != idNumber)
                     {
-                        label5.Hide();
-                        label6.Hide();
-                        label7.Hide();
-                        label8.Hide();
-                        label9.Hide();
-                        label10.Hide();
-                        label13.Hide();
+                        MessageBox.Show("Invalid ID Number entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     idSearchBox.Clear();
@@ -182,11 +179,23 @@ namespace Project_3
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            FileStream file = new FileStream("Residence Hall.csv", FileMode.Append, FileAccess.Write);
-            StreamWriter writer = new StreamWriter(file);
+
+            if (fnameTxtBox.Text == "")
+            {
+                errorMsgLabel.Text = "Please Enter First Name of Student.";
+                errorMsgLabel.Show();
+            }
+            else if (lnameTxtBox.Text == null)
+            {
+                errorMsgLabel.Text = "Please Enter the Last Name of Student.";
+            }
 
             try
             {
+
+                FileStream file = new FileStream("Residence Hall.csv", FileMode.Append, FileAccess.Write);
+                StreamWriter writer = new StreamWriter(file);
+
                 string fname = fnameTxtBox.Text;
                 string lname = lnameTxtBox.Text;
                 string stdntGroup = stdntTypeCmbBox.SelectedItem.ToString();
