@@ -93,16 +93,20 @@ namespace Project_3
                     }
                     else if (stdnt.idNum != idNumber)
                     {
-                        MessageBox.Show("Invalid ID Number entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
 
                     idSearchBox.Clear();
+
                 }
-            }catch(Exception i)
+            }
+            catch(Exception i)
             {
                 Console.WriteLine(i.StackTrace);
                 MessageBox.Show("Please Enter an ID Number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         private void idSearchBox_TextChanged(object sender, EventArgs e)
@@ -249,13 +253,13 @@ namespace Project_3
         private void stdntTypeCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             floorCmbBox.Items.Clear();
-            if (stdntTypeCmbBox.SelectedItem == "Worker")
+            if (stdntTypeCmbBox.SelectedItem.ToString() == "Worker")
             {
                 floorCmbBox.Items.Add("1");
                 floorCmbBox.Items.Add("2");
                 floorCmbBox.Items.Add("3");
             }
-            else if (stdntTypeCmbBox.SelectedItem == "Athlete")
+            else if (stdntTypeCmbBox.SelectedItem.ToString() == "Athlete")
             {
                 floorCmbBox.Items.Add("4");
                 floorCmbBox.Items.Add("5");
